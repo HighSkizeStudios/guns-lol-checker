@@ -1,0 +1,3 @@
+# Runtime dependencies for the guns.lol username availability checker.
+# Install with:  pip install -r requirements.txt
+aiohttp>=3.9,<4.0

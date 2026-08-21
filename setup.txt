@@ -1,0 +1,82 @@
+Setup Guide – guns.lol Username Availability Checker
+1. Install Python (if not already installed)
+Windows
+
+Download Python 3.10+ from python.org.
+
+Run installer – check “Add Python to PATH”.
+
+Verify: open Command Prompt and type python --version.
+
+macOS
+
+Open Terminal and type python3 --version.
+
+If missing, install via python.org or brew install python.
+
+Linux (Ubuntu/Debian)
+
+Most systems have Python 3. Check with python3 --version.
+
+If missing: sudo apt update && sudo apt install python3 python3-pip.
+
+Chromebook (Linux container)
+
+Enable Linux in Settings.
+
+Open Terminal app. Python 3 is usually pre‑installed.
+
+Check with python3 --version.
+
+2. Download & Extract Files
+Download the ZIP.
+
+Extract to a folder you can find easily.
+
+Remember the folder path.
+
+3. Install Dependencies
+Open a terminal inside that folder.
+
+Windows (Command Prompt)
+
+cmd
+cd C:\your\folder\path
+python -m pip install -r requirements.txt
+macOS / Linux / Chromebook
+
+bash
+cd /your/folder/path
+python3 -m pip install -r requirements.txt
+If you get a permission error, add --user:
+
+bash
+python3 -m pip install --user -r requirements.txt
+4. Run the Checker
+Windows
+
+cmd
+python main.py --length 3 --charset alnum --threads 3 --delay 1.0
+macOS / Linux / Chromebook
+
+bash
+python3 main.py --length 3 --charset alnum --threads 3 --delay 1.0
+You’ll see a live dashboard and any available usernames will be saved automatically (e.g., 3lavailable.txt).
+
+5. Optional: Discord Alerts
+Create a webhook in Discord: Server Settings → Integrations → Webhooks → New Webhook.
+
+Copy the webhook URL.
+
+Either paste it in config.py (replace DISCORD_WEBHOOK_URL) or add --webhook "URL" when running.
+
+6. Troubleshooting
+Problem	Fix
+ModuleNotFoundError: No module named 'aiohttp'	Run pip install aiohttp in the same terminal.
+python: command not found	Use python3 instead (Linux/macOS). On Windows, reinstall Python with PATH checked.
+Preflight failed	Network can’t reach guns.lol. Try --no-preflight or check internet.
+Discord HTTP 404: Unknown Webhook	Webhook URL is invalid/expired. Create a new one.
+Many 429 Too Many Requests	Reduce --threads (e.g., 2) and increase --delay (e.g., 2.0).
+Permission denied (Linux/macOS)	Run chmod +x main.py then ./main.py.
+Made by HighSkize Productions – Updates coming soon.
+
